@@ -1,0 +1,1 @@
+const RecipeModel = require('../models/recipe')
