@@ -31,9 +31,12 @@ const commentSchema = new Schema({
 // in our mongodb movies collection
 const recipeSchema = new Schema({
   title: String,
-  releaseYear: Number,
-  mpaaRating: String,
-  nowShowing: Boolean,
+  cuisine: String,
+  diet: {
+    type: String,
+    enum: ['Paleo', 'Vegan', 'Low-Carb', 'Detox', 'Mediterranean']
+  },
+  howToCook: String,
 
   // Many to Many Relationship
   // Move has many performers, Performers has many Movies

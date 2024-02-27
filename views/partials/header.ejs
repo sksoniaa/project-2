@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body>
-  
-</body>
-</html>
+	<nav>
+		<a href="/recipes">ALL MOVIES</a>
+		<% if (user) { %>
+		  <a href="/ingredients/new"	>
+			  ADD PERFORMER</a>
+		  <a href="/recipes/new" >ADD MOVIE</a>
+		  <a href="/logout">LOG OUT</a>
+		<% } else { %>
+		  <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+		<% } %>
+	  </nav>
+	<main>

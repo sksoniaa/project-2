@@ -5,7 +5,11 @@ const Schema = mongoose.Schema;
 // in the performers collection
 const ingredientSchema = new Schema({
   name: {type: String, required: true, unique: true},
-  born: Date
+  number: Number,
+  unit: {
+    number: String,
+    enum: ['tsp.', 'tbs.', 'fl oz', 'cup', 'lb', 'oz']
+  }
 }, {
   timestamps: true
 });
