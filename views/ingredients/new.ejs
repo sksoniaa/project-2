@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+<%- include('../partials/header') %>
+<p>Please first ensure that the Ingredient is not in the dropdown
+	<select>
+		<% ingredients.forEach(function(i) { %>
+			<option>
+				<%= i.name %> <%= i.number %> <%= i.unit %>
+			</option>
+			<% }) %>
+	</select>
+</p>
+<form id="add-ingredient-form" action="/ingredients" method="POST">
+	<label>Name:</label>
+	<input type="text" name="name">
+  <label>Number:</label>
+  <input type="number" name="number">
+  <label>Unit:</label>
+  <select name="unit">
+    <option value="tsp">tsp</option>
+    <option value="tbs">tbs</option>
+    <option value="fl oz">fl oz</option>
+    <option value="cup">cup</option>
+    <option value="lb">lb</option>
+    <option value="oz">oz</option>
+    <option value="piece">piece</option>
+    <option value="slice">slice</option>
+  </select>
+	<input type="submit" value="Add Ingredient">
+</form>
+
+<%- include('../partials/footer') %>

@@ -34,17 +34,17 @@ const recipeSchema = new Schema({
   cuisine: String,
   diet: {
     type: String,
-    enum: ['Paleo', 'Vegan', 'Low-Carb', 'Detox', 'Mediterranean']
+    enum: ['Paleo', 'Vegan', 'Low-Carb', 'Detox', 'Mediterranean', 'NotSure']
   },
   howToCook: String,
 
   // Many to Many Relationship
-  // Move has many performers, Performers has many Movies
+  // Move has many Ingredients, Ingredients has many Movies
   // using referencing!
   list: [{
     type: Schema.Types.ObjectId, // this is from mongoose
-    ref: 'Ingredient' // Performer is referencing the model name that 
-    // you are creating the relationship with, mongoose.model('Performer', performerSchema);
+    ref: 'Ingredient' // Ingredient is referencing the model name that 
+    // you are creating the relationship with, mongoose.model('Ingredient', IngredientSchema);
   }],
   // One movie has many reviews, A review belongs to a movie 
   // Using embedding on the one side of the relationship

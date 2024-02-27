@@ -1,3 +1,20 @@
 <%- include('../partials/header') %>
-  <h1>recipes/index.ejs</h1>
+<table id="list">
+  <thead>
+    <tr>
+    <th>Title</th>
+    <th>Cuisine</th>
+    <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% recipeDocs.forEach(function(r) { %>
+    <tr>
+      <td><%= r.title %></td>
+      <td><%= r.cuisine %></td>
+      <td><a href="/recipes/<%= r._id %>">DETAILS</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+  </table>
 <%- include('../partials/footer') %>

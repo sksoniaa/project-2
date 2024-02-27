@@ -1,3 +1,34 @@
 <%- include('../partials/header') %>
-<h1>recipes/new.ejs</h1>
+
+<h2>Enter a New Recipe</h2>
+<form action="/recipes" method="POST">
+  <label>Title:
+    <input type="text" name="title">
+  </label><br>
+  <label>Cuisine:
+    <input type="text" name="cuisine">
+  </label><br>
+  <label>Diet: 
+    <select name="diet">
+      <option value="Paleo">Paleo</option>
+      <option value="Vegan">Vegan</option>
+      <option value="Low-Carb">Low-Carb</option>
+      <option value="Detox">Detox</option>
+      <option value="Mediterranean">Mediterranean</option>
+      <option value="NotSure">Not Sure</option>
+    </select>
+  </label><br>
+
+  <label>Cooking:
+    <textarea name="howToCook"></textarea>
+  </label><br>
+
+
+
+  <button type="submit">GO TO LIST</button>
+  
+
+  <button type="submit">Add Recipe</button>
+</form>
+
 <%- include('../partials/footer') %>

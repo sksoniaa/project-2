@@ -1,3 +1,85 @@
 <%- include('../partials/header') %>
-<h1>recipes/show.ejs</h1>
+<section id="show-page">
+
+  <div>Title: <%= recipe.title %></div>
+  <div>Cuisine: <%= recipe.cuisine %></div>
+  <div>Diet: <%= recipe.diet %></div>
+
+  <div>Ingredients: </div>
+  <ul>
+    <% recipe.list.forEach(i => { %>
+     <li>
+      <%= i.name %>
+     </li>
+    <% }) %>
+  </ul>
+</section>
+
+<br><br>
+
+
+<form action="/recipes/<%= recipe._id %>/ingredients" method="POST">
+  <select name="ingredientId" id="add-per-to-list">
+    <% ingredients.forEach(i => { %>
+    <option value="<%= i._id %>">
+      <%= i.name %> <%= i.number %> <%= i.unit %>
+    </option>
+    <% }) %>
+  </select>
+
+
+  <button type="submit">ADD TO LIST</button>
+
+</form>
+<br><br>
+
+<h2>Comments</h2>
+
+<% if (user) { %>
+ <form action="/recipes/<%= recipe._id %>/comments" id="add-comment-form" method="POST">
+  <label>Comment:</label>
+  <textarea name="content"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5" selected>5</option>
+  </select>
+  <input type="submit" value="Add Comment"></form>
+<% } %>
+
+<% if (recipe.comments.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% recipe.comments.forEach(function(c) { %>
+        <tr>
+          <td class="comment-user"><img alt="avatar" src="<%= c.userAvatar %>"
+              referrerpolicy="no-referrer">
+            <%= c.userName %>
+          </td>
+          <td>
+            <%= c.createdAt.toLocaleDateString() %>
+          </td>
+          <td>
+            <%= c.content %>
+          </td>
+          <td>
+            <%= c.rating %>
+          </td>
+          <td>
+
+        </tr>
+        <% }); %>
+        <% } %>
+
 <%- include('../partials/footer') %>
