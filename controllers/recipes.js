@@ -8,19 +8,21 @@ module.exports = {
   show,
 }
 
+
+
 // SHOW FUNCTION
 async function show(req, res) {
   try{
     const recipeFromTheDatabase = await RecipeModel
-                                        .findById(req.params.id)
-                                        .populate('list')
-                                        .exec();
-
-
+    .findById(req.params.id)
+    .populate('list')
+    .exec();
+    
+    
     console.log(recipeFromTheDatabase);
-
+    
     const IngredientsNotInTheRecipe = await IngredientModel.find({_id: {$nin: recipeFromTheDatabase.list}});
-
+    
     res.render('recipes/show', {
       recipe: recipeFromTheDatabase,
       ingredients: IngredientsNotInTheRecipe
@@ -34,7 +36,7 @@ async function show(req, res) {
 async function index(req, res) {
   try{
     const recipeFromTheDB = await RecipeModel.find({})
-
+    
     res.render('recipes/index', {recipeDocs: recipeFromTheDB})
   } catch(err) {
     res.redirect('/')
@@ -48,10 +50,10 @@ async function create(req, res) {
   }
   try{
     const recipeFromTheDatabase = await RecipeModel.create(req.body);
-
+    
     res.redirect(`/recipes/${recipeFromTheDatabase._id}`);
   } catch(err) {
-	  res.render("recipes/new", { errorMsg: err.message });
+    res.render("recipes/new", { errorMsg: err.message });
   }
 }
 
@@ -59,3 +61,6 @@ async function create(req, res) {
 function newRecipe(req, res) {
   res.render('recipes/new')
 }
+
+
+

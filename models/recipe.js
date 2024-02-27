@@ -52,7 +52,7 @@ const recipeSchema = new Schema({
 }, {
   timestamps: true
 });
-	
+
 // Compile the schema into a model and export it
 // Movie, creates a movies collection in our movies database
 module.exports = mongoose.model('Recipe', recipeSchema);

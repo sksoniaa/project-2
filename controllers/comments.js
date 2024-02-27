@@ -2,8 +2,23 @@ const recipe = require('../models/recipe')
 const RecipeModel = require('../models/recipe')
 
 module.exports = {
-  create
+  create,
+  delete: deleteComment
 }
+
+async function deleteComment(req,res) {
+  try{
+    const recipeDoc = await RecipeModel.findOne({'comments._id': req.params.id})
+    if (!recipeDoc) return res.redirect(`/recipes`)
+    recipeDoc.comments.remove(req.params.id)
+    recipeDoc.save()
+    res.redirect(`/recipes/${recipeDoc._id}`)
+  } catch(err) {
+    res.send(err)
+  }
+}
+
+
 
 async function create(req, res) {
   console.log(req.user)
