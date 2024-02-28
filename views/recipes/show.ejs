@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('./partials/header') %>
 <section id="show-page">
 
   <div>Title: <%= recipe.title %></div>
@@ -71,14 +71,19 @@
             <%= c.createdAt.toLocaleDateString() %>
           </td>
           <td>
-            <%= c.content %>
+              <%= c.content %>
           </td>
           <td>
             <%= c.rating %>
+        </td>
+          <td>
+            <form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+              <!-- Value attribute is being set to the comment's current text -->
+              <input name="content" value="<%= c.content %>">
+              <button type="submit">UPDATE COMMENT</button>
+            </form>
           </td>
           <td>
-
-        </tr>
         <td>
           <% if (user && user._id.equals(c.user)) { %>
             <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
@@ -94,4 +99,4 @@
       <h5>No Reviews Yet</h5>
       <% } %>
 
-<%- include('../partials/footer') %>
+<%- include('./partials/footer') %>

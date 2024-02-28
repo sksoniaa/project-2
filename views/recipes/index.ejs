@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include('./partials/header') %>
 <table id="list">
   <thead>
     <tr>
@@ -8,14 +8,19 @@
     </tr>
   </thead>
   <tbody>
+
     <% recipeDocs.forEach(function(r) { %>
-    <tr>
-      <td><%= r.title %></td>
-      <td><%= r.cuisine %></td>
-      <td><a href="/recipes/<%= r._id %>">DETAILS</a></td>
-      </tr>
-      <% }); %>
+      <tr>
+        <td><%= r.title %></td>
+        <td><%= r.cuisine %></td>
+        <td>
+        <% if (user) { %>
+          <a href="/recipes/<%= r._id %>">DETAILS</a>
+          <% } %>
+        </td>
+    </tr>
+    <% }); %>
     </tbody>
   </table>
 
-<%- include('../partials/footer') %>
+<%- include('./partials/footer') %>
