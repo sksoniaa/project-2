@@ -36,7 +36,6 @@ const recipeSchema = new Schema({
     type: String,
     enum: ['Paleo', 'Vegan', 'Low-Carb', 'Detox', 'Mediterranean', 'NotSure']
   },
-  howToCook: String,
 
   // Many to Many Relationship
   // Move has many Ingredients, Ingredients has many Movies
