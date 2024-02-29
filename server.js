@@ -14,6 +14,8 @@ const recipesRouter = require('./routes/recipes');
 const commentsRouter = require('./routes/comments');
 const ingredientsRouter = require('./routes/ingredients');
 const app = express();
+const MongoStore = require('connect-mongo');
+
 
 
 // connect to the MongoDB with mongoose
@@ -32,6 +34,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 // mount the session middleware
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
