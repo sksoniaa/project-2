@@ -6,6 +6,4 @@ router.get('/ingredients/new', ingredientsCtrl.new);
 router.post('/ingredients', ingredientsCtrl.create)
 router.post('/recipes/:recipeId/ingredients', ingredientsCtrl.addToList)
 
-
-
 module.exports = router;
