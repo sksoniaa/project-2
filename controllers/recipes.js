@@ -53,7 +53,7 @@ async function create(req, res) {
     
     res.redirect(`/recipes/${recipeFromTheDatabase._id}`);
   } catch(err) {
-    res.render("recipes/new", { errorMsg: err.message });
+    res.redirect("/recipes/new");
   }
 }
 
