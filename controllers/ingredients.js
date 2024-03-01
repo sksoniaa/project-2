@@ -5,23 +5,8 @@ module.exports = {
   new: newIngredient,
   create,
   addToList,
-  delete: deleteOne
 }
 
-
-// DELETE FUNCTION
-
-  async function deleteOne(req, res) {
-    try{
-      const recipeDoc = await RecipeModel.findOne(req.params.recipeId)
-      recipeDoc.ingredients.remove(req.params.id)
-      recipeDoc.save()
-      res.redirect(`/recipes/${req.params.recipeId}`)
-
-    } catch(err) {
-      res.send(err)
-    }
-  }
 
 // ADDTOLIST FUNCTION
 async function addToList(req, res) {

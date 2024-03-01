@@ -5,7 +5,6 @@ const ingredientsCtrl = require('../controllers/ingredients');
 router.get('/ingredients/new', ingredientsCtrl.new);
 router.post('/ingredients', ingredientsCtrl.create)
 router.post('/recipes/:recipeId/ingredients', ingredientsCtrl.addToList)
-router.delete('/recipes/:recipeId/ingredients/:ingredientId', ingredientsCtrl.delete)
 
 
 
